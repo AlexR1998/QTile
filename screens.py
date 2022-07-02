@@ -1,7 +1,8 @@
 from libqtile import bar, widget
 from libqtile.config import Screen
 from libqtile import qtile
-from design import colors,margin
+import design
+from design import colors
 
 widget_defaults = dict(
     font='Cantarell',
@@ -16,87 +17,63 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(
-                    background=colors[3],
-                    foreground=colors[0]
-                    ),
-                widget.CurrentLayoutIcon(foreground=colors[1]),
+                # widget.CurrentLayout(
+                #     background=design.bar_backgrounds,
+                #     foreground=design.bar_foregrounds
+                #     ),
+                #widget.CurrentLayoutIcon(foreground="#000000"),
                 widget.GroupBox(
-                    active=colors[1],
+                    active=design.bar_foregrounds,
                     hide_unused=True,
-                    block_highlight_text_color=colors[0],
-                    this_current_screen_border=colors[3],
-                    other_current_screen_border=colors[3],
-                    other_screen_border=colors[3],
-                    this_screen_border=colors[2],
-                    highlight_method="block",
+                    block_highlight_text_color=design.bar_foregrounds,
+                    this_current_screen_border=design.borders,
+                    highlight_method="line",
                     rounded=False,
                     margin_x=0,
-                    padding_x=5,
-                    padding_y=5,
-                    borderwidth=1
+                    padding_x=8,
+                    padding_y=8,
+                    borderwidth=3,
+                    background="#000000",
+                    fontsize=14,
+                    font='Cantarell Bold'
                     ),
                 widget.Spacer(),
+                
+                widget.NvidiaSensors(
+                        font='Cantarell Bold',
+                        fontsize=14,
+                        background=design.borders
+                        
+                ),
+
+
+
+
+                widget.Clock(
+                        format='%d/%m/%y %H:%M',
+                        foreground=design.bar_foregrounds,
+                        #background=design.borders,
+                        padding=5,
+                        fontsize=14,
+                        font='Cantarell Bold'
+                        ),
+                
+
+
                 widget.Systray(),
 
-                widget.TextBox(
-                    font="Ubuntu Bold",
-                    text="◀",
-                    #text="◂",
-                    foreground=colors[3],
-                    background=colors[0],
-                    padding=-2,
-                    fontsize=23
-                    ),
-                widget.TextBox(
-                    font="Ubuntu Bold",
-                    text="",
-                    fontsize=14,
-                    foreground=colors[0],
-                    background=colors[3],
-                    mouse_callbacks={'Button1':volume}
-                    ),
-                widget.Volume(
-                    foreground=colors[0],
-                    background=colors[3],
-                    padding=0,
-                    margin=0
-                    ),
-                widget.TextBox(
-                    font="Ubuntu Bold",
-                    text="",
-                    foreground=colors[0],
-                    background=colors[3],
-                    fontsize=14,
-                    padding=5
-                    ),
-                widget.Battery(
-                    unknown_char=' ',
-                    format='{char}{percent:2.0%}',
-                    foreground=colors[0],
-                    background=colors[3],
-                    padding=5,
-                    charge_char="",
-                    discharge_char="",
-                    empty_char=""
-                    ),
-                widget.Clock(
-                        format='%A %B %d, %I:%M %p',
-                        foreground=colors[1],
-                        background=colors[0],
-                        padding=5
-                        ),
-                widget.QuickExit(
-                        default_text="",
-                        fontsize=14,
-                        background=colors[1],
-                        foreground=colors[0],
-                        padding=5
-                        ),
+                
+                # widget.QuickExit(
+                #         default_text="",
+                #         fontsize=25,
+                #         background=design.bar_backgrounds,
+                #         foreground=design.bar_foregrounds,
+                #         padding=8
+                #         ),
             ],
-            20,
-            opacity=0.9,
-            margin=[margin,margin,0,margin]
+            30,
+            opacity=0.8,
+            margin=[0,0,0,0]
         ),
     ),
 ]

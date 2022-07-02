@@ -1,9 +1,10 @@
 from libqtile import layout
 from design import colors,margin
+import design
 
-lay_config={"border_focus":colors[1],
+lay_config={"border_focus":design.borders,
             "border_width":2,
-            "margin":margin,
+            "margin":[margin,margin,margin,margin],
             "border_normal":colors[0]
         }
 

@@ -50,7 +50,7 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn("dmenu_run"),
+    Key([mod], "r", lazy.spawn('dmenu_run -i -p "Buscador de aplicaciones" -fn "Cantarell-12" -nb "#000000" -nf "#ffffff" -sb "#006400" -l 3'),
         desc="Spawn a command using a prompt widget")
 ]
 
